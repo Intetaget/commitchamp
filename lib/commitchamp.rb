@@ -1,6 +1,5 @@
 require "httparty"
 require "pry"
-require ""
 require "commitchamp/version"
 require "rubygems"
 # Probably you also want to add a class for talking to github.
@@ -18,25 +17,26 @@ module Commitchamp
       }
     end
 
+
+
+      def run
+      # Your code goes here...  Defines values for login and serchparameters
+      puts "Please enter your github authorization code"
+      get_token = STDIN.gets.chomp
+      puts "Please enter the users info"
+      author=STDIN.gets.chomp
+      puts "please enter the repo"r
+      repo=STDIN.gets.chomp
+
+    end
+  end
+end
 #goto page https://developer.github.com/v3/repos/statistics/#get-contributors-list-with-additions-deletions-and-commit-counts
 #GET /repos/:owner/:repo/stats/contributors
 #https://developer.github.com/v3/#authentication
 #http://www.theodinproject.com/ruby-on-rails/working-with-external-apis
 #https://www.codementor.io/ruby-on-rails/tutorial/how-to-build-a-robust-json-api-client-with-ruby-httparty
 
-
-
-      def loginginandinfospec
-      # Your code goes here...  Defines values for login and serchparameters
-      puts "Please enter your github authorization code"
-      authcode=gets.chomp
-      puts "Please enter the users info"
-      author=gets.chomp
-      puts "please enter the repo"
-      repo=gets.chomp
-    end
-  end
-end
 
 app = Commitchamp::App.new
 app.run
