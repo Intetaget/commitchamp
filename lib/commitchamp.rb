@@ -7,6 +7,10 @@ require "rubygems"
 
 module Commitchamp
   class App
+  	 
+  	include HTTParty
+    base_uri "https://api.github.com"
+
     def initialize
     	      @auth = {
           "Authorization" => "token #{get_token}",
@@ -18,10 +22,12 @@ module Commitchamp
 #GET /repos/:owner/:repo/stats/contributors
 #https://developer.github.com/v3/#authentication
 #http://www.theodinproject.com/ruby-on-rails/working-with-external-apis
+#https://www.codementor.io/ruby-on-rails/tutorial/how-to-build-a-robust-json-api-client-with-ruby-httparty
 
 
-    def loginginandinfospec
-      # Your code goes here...
+
+      def loginginandinfospec
+      # Your code goes here...  Defines values for login and serchparameters
       puts "Please enter your github authorization code"
       authcode=gets.chomp
       puts "Please enter the users info"
