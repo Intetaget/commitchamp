@@ -1,29 +1,46 @@
 require "httparty"
 require "pry"
-#require "version"
+require "commitchamp/version"
 require "rubygems"
-#require "helper"
+require "commitchamp/helper"
 # Probably you also want to add a class for talking to github.
 
 module Commitchamp
   class App
-  	 
   	include HTTParty
     base_uri "https://api.github.com"
 
     def initialize
     	      @auth = {
-          "Authorization" => "get_logincreds",
+          "Authorization" => "auth_token",
           "User-Agent"    => "HTTParty"
       }
     end
 
 
 
-    def run
-    # Your code goes here...  Defines values for login and serchparameters
+    def run 
+      puts "enter your token"
+      token = STDIN.gets.chomp
+      @getapi = Helper.new(token)
+      puts "please enter the desired User-Agent"
+      author = STDIN.gets.chomp
+      puts "please enter the desired repo"
+      repo = STDIN.gets.chomp
+      repos = Helper.getrepofunction(author, repo)
     end
-  end
+
+
+
+
+
+
+
+    # Your code goes here...  Defines values for login and serchparameters
+    
+
+    end
+  
 end
 #goto page https://developer.github.com/v3/repos/statistics/#get-contributors-list-with-additions-deletions-and-commit-counts
 #GET /repos/:owner/:repo/stats/contributors
