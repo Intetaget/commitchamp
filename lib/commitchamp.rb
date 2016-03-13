@@ -31,7 +31,7 @@ module Commitchamp
     end
 
 
-
+      #bundle exec ruby lib/commitchamp.rb
 
 
 
@@ -40,8 +40,7 @@ module Commitchamp
     
 
     end
-  
-end
+  end
 #goto page https://developer.github.com/v3/repos/statistics/#get-contributors-list-with-additions-deletions-and-commit-counts
 #GET /repos/:owner/:repo/stats/contributors
 #https://developer.github.com/v3/#authentication

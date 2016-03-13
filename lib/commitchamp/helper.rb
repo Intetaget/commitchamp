@@ -13,12 +13,11 @@ module Commitchamp
     	end
      
 
-    def getrepofunction (author, repo)
+    	def getrepofunction (author, repo)
     	Helper.get("/repos/#{author}/#{repo}/stats/contributors", :header=>@auth)
-
-    end
-end 
-	end
+    	end
+    end 
+end
 
 
 
