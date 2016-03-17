@@ -28,11 +28,44 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
-      puts "#{result}"
+      # this one is outcommented for now .....puts "#{result}"
+      # Once all the contributions have been collected for a repo, offer to sort them by:
+
+      # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
     end
 
 
       #bundle exec ruby lib/commitchamp.rb
+
+
+
+
+
+
+
+
+received_events_url"=>"https://api.github.com/users/mawis/received_events", 
+"type"=>"User", 
+"site_admin"=>false}}, {"total"=>1, "weeks"=>[{"w"=>1297555200, "a"=>0, "d"=>0, "c"=>0},
+
+
+# Normal Mode
+
+# Get the list of contributions for the specified repo. Figure out how many lines the user added, deleted, and their commit count. You don't have to track contributions by week, just sum them to get a total.
+
+# Once all the contributions have been collected for a repo, offer to sort them by:
+
+# 1) lines added 2) lines deleted 3) total lines changed 4) commits made
+
+# Then print the commit counts in a table as below:
+
+# ## Contributions for 'owner/repo'
+
+# Username      Additions     Deletions     Changes
+# User 1            13534          2954        6249
+# User 2             6940           913        1603
+# ...
+# Finally, ask the user if they'd like to sort the data differently, fetch another repo, or quit.
 
 
 
@@ -42,30 +75,8 @@ module Commitchamp
 
     end
   end
-#goto page https://developer.github.com/v3/repos/statistics/#get-contributors-list-with-additions-deletions-and-commit-counts
-#GET /repos/:owner/:repo/stats/contributors
-#https://developer.github.com/v3/#authentication
-#http://www.theodinproject.com/ruby-on-rails/working-with-external-apis
-#https://www.codementor.io/ruby-on-rails/tutorial/how-to-build-a-robust-json-api-client-with-ruby-httparty
-
-
 app = Commitchamp::App.new
 app.run
-
-
-
-
-# class Representative
-#   format :json
-  
-#   def self.find_by_zip(zip)
-#     get('http://whoismyrepresentative.com/whoismyrep.php', :query => {:zip => zip, :output => 'json'})
-#   end
-  
-#   def self.get_all_by_name(last_name)
-#     get('http://whoismyrepresentative.com/getall_reps_byname.php', :query => {:lastname => last_name, :output => 'json'})
-#   end
-# end
 
 # puts Representative.get_all_by_name('Donnelly').inspect
 # # {"results"=>[{"district"=>"2", "last"=>"Donnelly", "first"=>"Joe", "state"=>"IN", "party"=>"D"}]}
