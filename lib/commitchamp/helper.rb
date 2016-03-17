@@ -14,7 +14,7 @@ module Commitchamp
      
 
     	def getrepofunction (author, repo)
-    	Helper.get("/repos/#{author}/#{repo}/stats/contributors", :header=>@auth)
+    		Helper.get("/repos/#{author}/#{repo}/stats/contributors", :header=>@auth)
     	end
     end 
 end
