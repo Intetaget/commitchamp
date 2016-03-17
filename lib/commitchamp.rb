@@ -28,6 +28,7 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
+      puts "#{result}"
     end
 
 
