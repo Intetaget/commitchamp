@@ -26,7 +26,6 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
-      #puts "#{result}"
                        puts """
       # Would you like to sort the info by:
       # A: Lines added?
@@ -37,6 +36,7 @@ module Commitchamp
       #binding.pry
       sortingchoice = gets.chomp
       #binding.pry
+      #http://stackoverflow.com/questions/5483889/how-to-sort-an-array-of-hashes-in-ruby
       if sortingchoice == "A"
          result[0]['weeks'].sort_by { |x| x['a'] }
        end
