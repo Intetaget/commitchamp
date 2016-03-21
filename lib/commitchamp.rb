@@ -35,16 +35,17 @@ module Commitchamp
       Please choose A through C
       """
       sortingchoice = gets.chomp.upcase
-        if sortingchoice == A
+      if sortingchoice == A
           result = result.sort_by{a}
-        end
-        if sortingchoice == B 
+      end
+      if sortingchoice == B 
             result = result.sort_by{d}
-        end
-        if sortingchoice == C
+      end
+      if sortingchoice == C
           result = result.sort_by{c}
-        end
+      end
       puts "#{result}"
+      
       
       # Once all the contributions have been collected for a repo, offer to sort them by:
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
