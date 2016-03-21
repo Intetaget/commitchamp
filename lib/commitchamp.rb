@@ -17,8 +17,6 @@ module Commitchamp
       }
     end
 
-
-
     def run 
       puts "enter your token"
       token = STDIN.gets.chomp
@@ -28,7 +26,7 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
-      puts "#{@result}"
+      #puts "#{@result}"
                        puts """
       Would you like to sort the info by:
       A: Lines added?
@@ -36,24 +34,20 @@ module Commitchamp
       C: total lines changed?
       Please choose A through C
       """
-      sortingoption=(STDIN.gets.chomp).upcase
-      # Once all the contributions have been collected for a repo, offer to sort them by:
-      # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
-        if sortingoption == A
+      sortingchoice = gets.chomp.upcase
+        if sortingchoice == A
           result = result.sort_by{a}
         end
-        if sortingoption == B 
+        if sortingchoice == B 
             result = result.sort_by{d}
         end
-        if sortingoption == C
+        if sortingchoice == C
           result = result.sort_by{c}
         end
+      puts "#{result}"
       
-
-
-    
-
-
+      # Once all the contributions have been collected for a repo, offer to sort them by:
+      # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
       #bundle exec ruby lib/commitchamp.rb
     end
   end
