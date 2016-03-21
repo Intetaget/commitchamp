@@ -27,7 +27,7 @@ module Commitchamp
       """
       sortingoption=(STDIN.gets.chomp).upcase
       end
-    end 
+    
   end
 end
 
