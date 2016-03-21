@@ -16,6 +16,17 @@ module Commitchamp
     	def getrepofunction (author, repo)
     		Helper.get("/repos/#{author}/#{repo}/stats/contributors", :header=>@auth)
     	end
+
+      def sortingoption  #I needd to sort the hashy tch laden mess.
+                 puts """
+      Would you like to sort the info by:
+      A: Lines added?
+      B: Lines deleted?
+      C: total lines changed?
+      Please choose A through C
+      """
+      sortingchoice=STDIN.gets.chomp
+      end
     end 
 end
 

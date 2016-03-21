@@ -28,35 +28,36 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       @result = @getapi.getrepofunction(author, repo)
-      # puts "#{@result}"
+      #puts "#{@result}"
+      sortingoption.new
       # Once all the contributions have been collected for a repo, offer to sort them by:
-
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
+        if sortingoption == A
+          result.sort_by { |hsh| hsh[:a] }
 
-    def sortingoption  #I needd to sort the hashy tch laden mess.
-                 puts """
-      A: Would you like to sort the info by:
-      B: Lines added?
-      C: Lines deleted?
-      D: total lines changed?
-      Please choose A through D
-      """
-      sortingchoice=STDIN.gets.chomp
-    end
+        if sortingoption == B 
+            result.sort_by { |hsh| hsh[:d] }
+        else
+          result.sort_by { |hsh| hsh[:c] }
+
+
+
+    
 
 
       #bundle exec ruby lib/commitchamp.rb
+    end
+  end
+end
+app = Commitchamp::App.new
+app.run
 
 
 
 
-
-
-
-
-received_events_url"=>"https://api.github.com/users/mawis/received_events", 
-"type"=>"User", 
-"site_admin"=>false}}, {"total"=>1, "weeks"=>[{"w"=>1297555200, "a"=>0, "d"=>0, "c"=>0},
+# received_events_url"=>"https://api.github.com/users/mawis/received_events", 
+# "type"=>"User", 
+# "site_admin"=>false}}, {"total"=>1, "weeks"=>[{"w"=>1297555200, "a"=>0, "d"=>0, "c"=>0},
 
 
 # Normal Mode
@@ -83,10 +84,9 @@ received_events_url"=>"https://api.github.com/users/mawis/received_events",
     # Your code goes here...  Defines values for login and serchparameters
     
 
-    end
-  end
-app = Commitchamp::App.new
-app.run
+
+
+
 
 # puts Representative.get_all_by_name('Donnelly').inspect
 # # {"results"=>[{"district"=>"2", "last"=>"Donnelly", "first"=>"Joe", "state"=>"IN", "party"=>"D"}]}
