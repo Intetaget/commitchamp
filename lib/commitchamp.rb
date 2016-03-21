@@ -33,7 +33,7 @@ module Commitchamp
 
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
 
-    def sortingchoice  #I needd to sort the hashy tch laden mess.
+    def sortingoption  #I needd to sort the hashy tch laden mess.
                  puts """
       A: Would you like to sort the info by:
       B: Lines added?
