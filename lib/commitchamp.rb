@@ -36,8 +36,10 @@ module Commitchamp
           result = result.sort_by{a}
         if sortingoption == B 
             result = result.sort_by{d}
-        if sortingoption == B 
+        if sortingoption == C
           result = result.sort_by{c}
+        end
+      
 
 
     

@@ -25,9 +25,10 @@ module Commitchamp
       C: total lines changed?
       Please choose A through C
       """
-      sortingchoice=STDIN.gets.chomp
+      sortingoption=(STDIN.gets.chomp).upcase
       end
     end 
+  end
 end
 
 
