@@ -27,17 +27,13 @@ module Commitchamp
       author = STDIN.gets.chomp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
-      result = @getapi.getrepofunction(author, repo)
-      result = []
- 
-
-
-      # this one is outcommented for now .....puts "#{result}"
+      @result = @getapi.getrepofunction(author, repo)
+      # puts "#{@result}"
       # Once all the contributions have been collected for a repo, offer to sort them by:
 
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
 
-    def sortingoption
+    def sortingchoice  #I needd to sort the hashy tch laden mess.
                  puts """
       A: Would you like to sort the info by:
       B: Lines added?
@@ -45,8 +41,7 @@ module Commitchamp
       D: total lines changed?
       Please choose A through D
       """
-      sortoption=STDIN.gets.chomp
-
+      sortingchoice=STDIN.gets.chomp
     end
 
 
