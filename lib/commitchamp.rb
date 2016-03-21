@@ -26,26 +26,28 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
-      #puts "#{@result}"
+      #puts "#{result}"
                        puts """
-      Would you like to sort the info by:
-      A: Lines added?
-      B: Lines deleted?
-      C: total lines changed?
-      Please choose A through C
-      """
-      sortingchoice = gets.chomp.upcase
-      if sortingchoice == A
-          result = result.sort_by{a}
+      # Would you like to sort the info by:
+      # A: Lines added?
+      # B: Lines deleted?
+      # C: total github commits?
+      # Please choose A through C
+      # """
+      #binding.pry
+      sortingchoice = gets.chomp
+      #binding.pry
+      if sortingchoice == "A"
+         result[0]['weeks'].sort_by { |x| x['a'] }
+       end
+      if sortingchoice == "B" 
+            result[0]['weeks'].sort_by { |x| x['d'] }
       end
-      if sortingchoice == B 
-            result = result.sort_by{d}
+        if sortingchoice == "C"
+          result[0]['weeks'].sort_by { |x| x['c'] }
       end
-      if sortingchoice == C
-          result = result.sort_by{c}
-      end
-      puts "#{result}"
-      
+       puts "#{result}"
+
       
       # Once all the contributions have been collected for a repo, offer to sort them by:
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
