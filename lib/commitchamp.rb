@@ -27,19 +27,17 @@ module Commitchamp
       author = STDIN.gets.chomp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
-      @result = @getapi.getrepofunction(author, repo)
+      result = @getapi.getrepofunction(author, repo)
       #puts "#{@result}"
       sortingoption.new
       # Once all the contributions have been collected for a repo, offer to sort them by:
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
         if sortingoption == A
-          result.sort_by { |hsh| hsh[:a] }
-
+          result = result.sort_by{a}
         if sortingoption == B 
-            result.sort_by { |hsh| hsh[:d] }
-        else
-          result.sort_by { |hsh| hsh[:c] }
-
+            result = result.sort_by{d}
+        if sortingoption == B 
+          result = result.sort_by{c}
 
 
     
