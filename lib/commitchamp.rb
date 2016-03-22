@@ -65,13 +65,13 @@ module Commitchamp
       sortingchoice = gets.chomp.upcase
       #http://stackoverflow.com/questions/5483889/how-to-sort-an-array-of-hashes-in-ruby
       if sortingchoice == "A"
-         result[0]['weeks'].sort_by { |x| x['a'] }
+         show.sort_by { |x| x['a'] }
       end
       if sortingchoice == "B" 
-            result[0]['weeks'].sort_by { |x| x['d'] }
+            show.sort_by { |x| x['d'] }
       end
         if sortingchoice == "C"
-          result[0]['weeks'].sort_by { |x| x['c'] }
+          show.sort_by { |x| x['c'] }
       end
 
       def puts_repo_contributions(result, repo)
