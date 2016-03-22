@@ -50,7 +50,7 @@ module Commitchamp
             # the additions etc. are translated to the api by lines 39-44.
             show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
             #binding.pry
-            puts show
+            #puts show
           
         
       end
@@ -65,20 +65,36 @@ module Commitchamp
       sortingchoice = gets.chomp.upcase
       #http://stackoverflow.com/questions/5483889/how-to-sort-an-array-of-hashes-in-ruby
       if sortingchoice == "A"
-         show.sort_by { |x| x['a'] }
+         show.sort_by { |x| x['additions'] }
       end
       if sortingchoice == "B" 
-            show.sort_by { |x| x['d'] }
+            show.sort_by { |x| x['deletes'] }
       end
         if sortingchoice == "C"
-          show.sort_by { |x| x['c'] }
+          show.sort_by { |x| x['commits'] }
       end
+      show = show.reverse
+      puts "          Username             Additions          Deletions        Changes"
+      puts show
 
-      def puts_repo_contributions(result, repo)
+      puts"""
+      Would you like to review another repo?
+
+      if so, please press y, else close the program
+
+      """
+      restart_option = gets.chomp.upcase
+        if restart_option == "Y"
+          app = Commitchamp::App.new
+          app.run
+        else exit  
+        end
+
+      def puts_repo_contributions(show, repo)
       puts "\n" * 5
       puts "Reporting for Repo: #{repo}"
       puts "Username             Additions  Deletions    Changes"
-      result.each do |result|
+      show.each do |result|
         printf("%-20s %9d  %9d  %9d \n", result[:author], result[:a], result[:d], result[:c])
       end
     end
