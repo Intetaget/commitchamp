@@ -11,7 +11,15 @@ module Commitchamp
           "Authorization" => "auth_token",
           "User-Agent"    => "HTTParty"}
     	end
-     
+      
+      def display_show (author, show, repo)
+      puts "\n" * 5
+      puts "Reporting for Repo: #{repo}"
+      puts "Username             Additions  Deletions    Changes"
+        show.each do |data|
+          printf("%-20s %9d  %9d  %9d \n", data[:login], data[:additions], data[:deletions], data[:commits])
+        end    
+      end
 
     	def getrepofunction (author, repo)
     		Helper.get("/repos/#{author}/#{repo}/stats/contributors", :header=>@auth)
