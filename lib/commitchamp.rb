@@ -28,17 +28,23 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
-      table = []
+      #filtering result did not work.  Need to put it in array and push to it.
+      show = []
       result.map do |result|
         additions = 0
         deletes = 0
         commits = 0
+        binding.pry
+        #the below will add up the induvidual numbers for "a", "d", "c"
         weeks = result["weeks"]
-        
+          weeks.map do |week|
+            additions += week ["a"]
+            deletes += week ["d"]
+            commits += week ["c"]
+            end
 
 
-
-
+      end
 
 
 
