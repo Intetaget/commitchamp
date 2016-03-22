@@ -16,7 +16,14 @@ module Commitchamp
           "User-Agent"    => "HTTParty"
       }
     end
-    
+  def display_show (show)
+  puts "\n" * 5
+  puts "Reporting :"
+  puts "Username             Additions  Deletions    Changes"
+    show.each do |data|
+      printf("%-20s %9d  %9d  %9d \n", data[:login], data[:additions], data[:deletions], data[:commits])
+    end  
+  end  
     
 
     def run 
@@ -52,17 +59,7 @@ module Commitchamp
             #binding.pry
             #puts show
       end
-      
-      def display_show (show)
-      puts "\n" * 5
-      puts "Reporting :"
-      puts "Username             Additions  Deletions    Changes"
-        show.each do |data|
-          printf("%-20s %9d  %9d  %9d \n", data[:login:], data[:additions], data[:deletions], data[:commits])
-        end  
-      end    
-      
-
+        
       puts """
       # Would you like to sort the info by:
       # A: Lines added?
