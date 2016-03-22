@@ -50,11 +50,10 @@ module Commitchamp
             # the additions etc. are translated to the api by lines 39-44.
             show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
             #binding.pry
-        end
+            puts show
+          
+        
       end
-
-
-
 
       puts """
       # Would you like to sort the info by:
@@ -63,12 +62,7 @@ module Commitchamp
       # C: total github commits?
       # Please choose A through C
       # """
-      #binding.pry
       sortingchoice = gets.chomp.upcase
-
-
-
-      #binding.pry
       #http://stackoverflow.com/questions/5483889/how-to-sort-an-array-of-hashes-in-ruby
       if sortingchoice == "A"
          result[0]['weeks'].sort_by { |x| x['a'] }
