@@ -49,7 +49,7 @@ module Commitchamp
             # ex. on https://developer.github.com/v3/repos/statistics/#contributors the login for author is "octocat"
             # the additions etc. are translated to the api by lines 39-44.
             show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
-            binding.pry
+            #binding.pry
             #puts show
       end
 
@@ -63,17 +63,27 @@ module Commitchamp
       sortingchoice = gets.chomp.upcase
       #http://stackoverflow.com/questions/5483889/how-to-sort-an-array-of-hashes-in-ruby
       if sortingchoice == "A"
-         show.sort_by { |x| x['additions'] }
+         show = show.sort_by { |x| x[:additions] }
       end
       if sortingchoice == "B" 
-            show.sort_by { |x| x['deletions'] }
+            show = show.sort_by { |x| x[:deletions] }
       end
         if sortingchoice == "C"
-          show.sort_by { |x| x['commits'] }
+          show = show.sort_by { |x| x[:commits] }
       end
       show = show.reverse
-      puts "          Username             Additions          Deletions        Changes"
-      puts show
+      
+
+      def display_show (show)
+      puts "\n" * 5
+      puts "Reporting"
+      puts "Username             Additions  Deletions    Changes"
+      show.each do |shows|
+        printf("%-20s %9d  %9d  %9d \n", shows[:login], shows[:additions], shows[:deletions], show[s:commits])
+      end
+
+      display_show
+    end
 
       puts"""
       Would you like to review another repo?
