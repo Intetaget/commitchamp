@@ -42,8 +42,14 @@ module Commitchamp
             deletes += week ["d"]
             commits += week ["c"]
             end
-            binding.pry
+            ###binding.pry   https://blog.udemy.com/ruby-inject/
+            # https://gistpages.com/posts/ruby_arrays_insert_append_length_index_remove
 
+            #the below gives buckets for the info to fall into
+            # ex. on https://developer.github.com/v3/repos/statistics/#contributors the login for author is "octocat"
+            # the additions etc. are translated to the api by lines 39-44.
+            show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
+            binding.pry
 
       end
 
