@@ -34,7 +34,7 @@ module Commitchamp
         additions = 0
         deletes = 0
         commits = 0
-        binding.pry
+        #binding.pry
         #the below will add up the induvidual numbers for "a", "d", "c"
         weeks = result["weeks"]
           weeks.map do |week|
@@ -42,6 +42,7 @@ module Commitchamp
             deletes += week ["d"]
             commits += week ["c"]
             end
+            binding.pry
 
 
       end
