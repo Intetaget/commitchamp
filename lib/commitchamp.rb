@@ -52,14 +52,17 @@ module Commitchamp
             #binding.pry
             #puts show
       end
-      def display_show (author, show, repo)
+      
+      def display_show (show)
       puts "\n" * 5
-      puts "Reporting for Repo: #{repo}"
+      puts "Reporting :"
       puts "Username             Additions  Deletions    Changes"
         show.each do |data|
-          printf("%-20s %9d  %9d  %9d \n", data[:author], data[:additions], data[:deletions], data[:commits])
-        end    
-      end
+          printf("%-20s %9d  %9d  %9d \n", data[:login:], data[:additions], data[:deletions], data[:commits])
+        end  
+      end    
+      
+
       puts """
       # Would you like to sort the info by:
       # A: Lines added?
@@ -80,8 +83,8 @@ module Commitchamp
       end
       show = show.reverse
       # puts "          Username             Additions          Deletions        Changes"
-      # #puts show
-      display_show
+      # puts show
+      display_show(show)
 
       puts"""
       Would you like to review another repo?
