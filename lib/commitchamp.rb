@@ -49,14 +49,14 @@ module Commitchamp
             # ex. on https://developer.github.com/v3/repos/statistics/#contributors the login for author is "octocat"
             # the additions etc. are translated to the api by lines 39-44.
             show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
-            binding.pry
-
+            #binding.pry
+        end
       end
 
 
 
 
-                             puts """
+      puts """
       # Would you like to sort the info by:
       # A: Lines added?
       # B: Lines deleted?
