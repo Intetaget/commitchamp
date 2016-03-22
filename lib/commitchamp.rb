@@ -16,6 +16,12 @@ module Commitchamp
           "User-Agent"    => "HTTParty"
       }
     end
+    
+    def display_data (author)
+        printf("%-20s %-10s %-10s %-10s\n", "Username ", "Additions ", "Deletions ", "Commits")
+        result.each do |visual|
+          printf("%-20s %-10s %-10s %-10s\n", "#{visual[:login]}", "#{visual[:a]}", "#{visual[:d]}", "#{visual[:c]}")
+    end
 
     def run 
       puts "enter your token"
@@ -46,9 +52,7 @@ module Commitchamp
         if sortingchoice == "C"
           result[0]['weeks'].sort_by { |x| x['c'] }
       end
-       puts "#{result}"
 
-      
       # Once all the contributions have been collected for a repo, offer to sort them by:
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
       #bundle exec ruby lib/commitchamp.rb
@@ -94,5 +98,3 @@ app.run
 
 
 
-# puts Representative.get_all_by_name('Donnelly').inspect
-# # {"results"=>[{"district"=>"2", "last"=>"Donnelly", "first"=>"Joe", "state"=>"IN", "party"=>"D"}]}
