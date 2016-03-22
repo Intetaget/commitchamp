@@ -17,7 +17,7 @@ module Commitchamp
       }
     end
     
-    def display_data (author)
+    def display_data (author, result)
         printf("%-20s %-10s %-10s %-10s\n", "Username ", "Additions ", "Deletions ", "Commits")
         result.each do |visual|
           printf("%-20s %-10s %-10s %-10s\n", "#{visual[:login]}", "#{visual[:a]}", "#{visual[:d]}", "#{visual[:c]}")
