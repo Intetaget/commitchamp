@@ -3,7 +3,7 @@ require "pry"
 require "commitchamp/version"
 require "rubygems"
 require "commitchamp/helper"
-# Probably you also want to add a class for talking to github.
+
 
 module Commitchamp
   class App
@@ -51,8 +51,6 @@ module Commitchamp
             show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
             #binding.pry
             #puts show
-          
-        
       end
 
       puts """
@@ -80,7 +78,8 @@ module Commitchamp
       puts"""
       Would you like to review another repo?
 
-      if so, please press y, else close the program
+      if so, please press y, else hit enter
+      or close the window
 
       """
       restart_option = gets.chomp.upcase
@@ -89,19 +88,6 @@ module Commitchamp
           app.run
         else exit  
         end
-
-      def puts_repo_contributions(show, repo)
-      puts "\n" * 5
-      puts "Reporting for Repo: #{repo}"
-      puts "Username             Additions  Deletions    Changes"
-      show.each do |result|
-        printf("%-20s %9d  %9d  %9d \n", result[:author], result[:a], result[:d], result[:c])
-      end
-    end
-
-      # Once all the contributions have been collected for a repo, offer to sort them by:
-      # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
-      #bundle exec ruby lib/commitchamp.rb
     end
   end
 end
@@ -115,29 +101,6 @@ app.run
 # "type"=>"User", 
 # "site_admin"=>false}}, {"total"=>1, "weeks"=>[{"w"=>1297555200, "a"=>0, "d"=>0, "c"=>0},
 
-
-# Normal Mode
-
-# Get the list of contributions for the specified repo. Figure out how many lines the user added, deleted, and their commit count. You don't have to track contributions by week, just sum them to get a total.
-
-# Once all the contributions have been collected for a repo, offer to sort them by:
-
-# 1) lines added 2) lines deleted 3) total lines changed 4) commits made
-
-# Then print the commit counts in a table as below:
-
-# ## Contributions for 'owner/repo'
-
-# Username      Additions     Deletions     Changes
-# User 1            13534          2954        6249
-# User 2             6940           913        1603
-# ...
-# Finally, ask the user if they'd like to sort the data differently, fetch another repo, or quit.
-
-
-
-
-    # Your code goes here...  Defines values for login and serchparameters
     
 
 
