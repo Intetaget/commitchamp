@@ -17,11 +17,7 @@ module Commitchamp
       }
     end
     
-    def display_data (author, result)
-        printf("%-20s %-10s %-10s %-10s\n", "Username ", "Additions ", "Deletions ", "Commits")
-        result.each do |visual|
-          printf("%-20s %-10s %-10s %-10s\n", "#{visual[:login]}", "#{visual[:a]}", "#{visual[:d]}", "#{visual[:c]}")
-    end
+    
 
     def run 
       puts "enter your token"
@@ -32,7 +28,22 @@ module Commitchamp
       puts "please enter the desired repo"
       repo = STDIN.gets.chomp
       result = @getapi.getrepofunction(author, repo)
-                       puts """
+      table = []
+      result.map do |result|
+        additions = 0
+        deletes = 0
+        commits = 0
+        weeks = result["weeks"]
+        
+
+
+
+
+
+
+
+
+                             puts """
       # Would you like to sort the info by:
       # A: Lines added?
       # B: Lines deleted?
@@ -40,18 +51,30 @@ module Commitchamp
       # Please choose A through C
       # """
       #binding.pry
-      sortingchoice = gets.chomp
+      sortingchoice = gets.chomp.upcase
+
+
+
       #binding.pry
       #http://stackoverflow.com/questions/5483889/how-to-sort-an-array-of-hashes-in-ruby
       if sortingchoice == "A"
          result[0]['weeks'].sort_by { |x| x['a'] }
-       end
+      end
       if sortingchoice == "B" 
             result[0]['weeks'].sort_by { |x| x['d'] }
       end
         if sortingchoice == "C"
           result[0]['weeks'].sort_by { |x| x['c'] }
       end
+
+      def puts_repo_contributions(result, repo)
+      puts "\n" * 5
+      puts "Reporting for Repo: #{repo}"
+      puts "Username             Additions  Deletions    Changes"
+      result.each do |result|
+        printf("%-20s %9d  %9d  %9d \n", result[:author], result[:a], result[:d], result[:c])
+      end
+    end
 
       # Once all the contributions have been collected for a repo, offer to sort them by:
       # 1) lines added 2) lines deleted 3) total lines changed 4) commits made
