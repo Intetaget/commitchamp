@@ -49,7 +49,7 @@ module Commitchamp
             # ex. on https://developer.github.com/v3/repos/statistics/#contributors the login for author is "octocat"
             # the additions etc. are translated to the api by lines 39-44.
             show.push ({login: result["author"]["login"], additions: additions, deletions: deletes, commits: commits})  
-            #binding.pry
+            binding.pry
             #puts show
       end
 
@@ -66,7 +66,7 @@ module Commitchamp
          show.sort_by { |x| x['additions'] }
       end
       if sortingchoice == "B" 
-            show.sort_by { |x| x['deletes'] }
+            show.sort_by { |x| x['deletions'] }
       end
         if sortingchoice == "C"
           show.sort_by { |x| x['commits'] }
@@ -101,6 +101,13 @@ app.run
 # "type"=>"User", 
 # "site_admin"=>false}}, {"total"=>1, "weeks"=>[{"w"=>1297555200, "a"=>0, "d"=>0, "c"=>0},
 
+
+
+
+
+
+
+    # Your code goes here...  Defines values for login and serchparameters
     
 
 
